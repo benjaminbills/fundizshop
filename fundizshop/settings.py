@@ -184,3 +184,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/Fundizshop/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':config('CLOUD_NAME'),
+    'API_KEY':config('CLOUDINARY_APIKEY'),
+    'API_SECRET':config('CLOUDINARY_APISECRET')
+}
