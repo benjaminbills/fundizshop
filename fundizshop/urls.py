@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.apps import apps
+from django.urls import include, path
 from django.contrib import admin
-from django.urls import path
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+
+    # The Django admin is not officially supported; expect breakage.
+    # Nonetheless, it's often useful for debugging.
+
     path('admin/', admin.site.urls),
+
+    path('', include(apps.get_app_config('oscar').urls[0])),
 ]
