@@ -12,11 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from oscar.defaults import *
+import os
 from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -101,7 +103,9 @@ ROOT_URLCONF = 'fundizshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            location('templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
