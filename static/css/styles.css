@@ -3035,8 +3035,8 @@ fieldset:disabled a.btn {
 
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-outline-secondary:focus,
@@ -5170,7 +5170,7 @@ input[type="button"].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: #f8f9fa;
   border-radius: 0.25rem;
 }
 
@@ -17390,7 +17390,17 @@ body {
 .product_pod .price_color {
   margin-bottom: 0.5rem;
 }
-
+/* product display  */
+.product_card{
+  width: 300px;
+  height: auto;
+  margin-bottom: 40px;
+}
+.product_flex{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
 .product_pod .product_price {
   position: absolute;
   bottom: 0;
@@ -17418,12 +17428,14 @@ a:hover .thumbnail {
 
 .availability.instock {
   color: #28a745;
+  font-weight: lighter;
+  font-size: normal;
 }
 
 .price_color {
   display: block;
-  color: #28a745;
-  font-weight: bold;
+  color: #ffb530;
+  font-size: small;
 }
 
 .product_main .price_color {

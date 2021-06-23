@@ -93,13 +93,20 @@
 
     {% if products %}
         <section>
-            <div>
-                <ol class="row list-unstyled ml-0 pl-0">
+            <div class="product_flex">
+              <!-- <div class="card"> -->
+                <!-- <ol class="row list-unstyled ml-0 pl-0"> -->
                     {% for product in products %}
-                        <li class="col-sm-6 col-md-4 col-lg-3">{% render_product product %}</li>
+                        <!-- <li class="col-sm-6 col-md-4 col-lg-3">{% render_product product %}</li> -->
+                    <div class="card product_card">
+                      <div class="card-body">
+                        {% render_product product %}
+                      </div>
+                    </div>
                     {% endfor %}
                 </ol>
                 {% include "oscar/partials/pagination.html" %}
+              
             </div>
         </section>
     {% else %}
