@@ -2630,7 +2630,15 @@ textarea.form-control.is-invalid {
     transition: none;
   }
 }
-
+/* Search btn  */
+.search-btn{
+  background-color: #ffb530;
+  color: white;
+}
+.search-btn:hover{
+  background-color: #E5A22B;
+  color:white;
+}
 .btn:hover {
   color: #212529;
   text-decoration: none;
@@ -2663,7 +2671,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:hover {
-  color: #fff;
+  color: black;
   background-color: #E5A22B;
   border-color: #E5A22B;
 }
