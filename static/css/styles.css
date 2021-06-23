@@ -165,7 +165,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: black;
   text-decoration: none;
   background-color: transparent;
 }
@@ -17375,7 +17375,8 @@ body {
 }
 
 .product_pod .price_color {
-  color: #28a745;
+  color: black;
+  font-weight: bold;
 }
 
 .product_pod .availability,
