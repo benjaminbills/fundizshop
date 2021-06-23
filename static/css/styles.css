@@ -3029,14 +3029,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary {
-  color: #6c757d;
-  border-color: #6c757d;
+  color: black;
+  border-color: #ffb530;
+  background-color:#ffb530;
 }
 
 .btn-outline-secondary:hover {
-  color: #fff;
-  background-color: #ffb530;
+  color: #ffb530;
   border-color: #ffb530;
+  background-color: #f8f9f8;
 }
 
 .btn-outline-secondary:focus,
@@ -17405,8 +17406,9 @@ body {
   position: absolute;
   bottom: 0;
 }
-
+/* Image thumbnail  */
 .image_container {
+  width: 100%;
   min-height: 165px;
   overflow: hidden;
   text-align: center;
