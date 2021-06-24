@@ -4936,6 +4936,10 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
+.results-card{
+  margin-bottom: 40px;
+}
+
 .card>hr {
   margin-right: 0;
   margin-left: 0;
