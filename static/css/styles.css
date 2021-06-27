@@ -5,9 +5,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
  
-@import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+/* @import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
 @import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
-@import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; */
 
  
 :root {
@@ -2629,6 +2629,7 @@ textarea.form-control.is-invalid {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* margin-top: 20px; */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2713,14 +2714,14 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #e0a800;
+  border-color: #e0a800;
 }
 
 .btn-secondary:focus,
