@@ -86,7 +86,8 @@ INSTALLED_APPS = [
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
-    'mpesa'
+    'mpesa',
+    'paypal',
 ]
 
 SITE_ID = 1
@@ -225,3 +226,10 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+
+# Paypal.
+PAYPAL_API_USERNAME=config('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD=config('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE=config('PAYPAL_API_SIGNATURE')
+
+OSCAR_DEFAULT_CURRENCY = 'USD'

@@ -24,6 +24,6 @@ urlpatterns = [
     # Nonetheless, it's often useful for debugging.
 
     path('admin/', admin.site.urls),
-
+    path('checkout/paypal/', include('paypal.express.urls')),
     path('', include(apps.get_app_config('oscar').urls[0])),
 ]
