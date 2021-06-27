@@ -2789,14 +2789,14 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-info:hover {
   color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
+  background-color: #E5A22B;
+  border-color: #E5A22B;
 }
 
 .btn-info:focus,
@@ -17036,7 +17036,7 @@ input[type="number"][id*="quantity"] {
 }
 
 .basket-items:nth-child(even) {
-  background: #e9ecef;
+  background: #f8f9fa;
 }
 
 .basket-items .price_color {
