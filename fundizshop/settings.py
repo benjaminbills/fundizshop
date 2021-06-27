@@ -14,7 +14,7 @@ from pathlib import Path
 from oscar.defaults import *
 import os
 from decouple import config,Csv
-import django_heroku
+# import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
+    'mpesa'
 ]
 
 SITE_ID = 1
@@ -141,27 +142,27 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
 DEBUG = config('DEBUG')
 #development
-if config('MODE')=="dev":
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'PORT': '',
-       }
-       
-   }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
+# if config('MODE')=="dev":
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'PORT': '',
     }
+    
+}
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=config('DATABASE_URL')
+#         )
+#     }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+# db_from_env = dj_database_url.config(conn_max_age=500)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
