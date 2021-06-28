@@ -17109,7 +17109,7 @@ input[type="number"][id*="quantity"] {
 }
 
 .nav-checkout .active .navbar-text {
-  color: #fff;
+  color: black;
 }
 
 .nav-checkout .nav-item {
