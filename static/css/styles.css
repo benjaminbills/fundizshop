@@ -3252,27 +3252,34 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
 }
 /* Payment Section  */
+.payment{
+  margin-top: 40px;
+}
 .paypal-btn{
   margin-bottom: 20px;
   border:1px solid black;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
   /* background-color:black; */
 }
 .paypal-logo{
-  width: 70px;
+  width: 60px;
   height: auto;
 }
 .mpesa-btn{
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border:1px solid black;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .mpesa-logo{
-  width: 70px;
+  width: 60px;
   height: auto;
 }
 
