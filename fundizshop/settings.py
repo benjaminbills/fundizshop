@@ -15,6 +15,8 @@ from oscar.defaults import *
 import os
 from decouple import config,Csv
 import moneyed
+import django_heroku
+import dj_database_url
 
 KSH = moneyed.add_currency(
     code='KSH',
@@ -96,6 +98,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'djmoney',
     
+    'paypal',
 ]
 
 SITE_ID = 1
@@ -110,6 +113,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'fundizshop.urls'
@@ -147,13 +152,29 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DEBUG = config('DEBUG')
+#development
+if config('MODE')=="dev":
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'PORT': '',
+       }
+       
+   }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
     }
-}
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -185,7 +206,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -210,3 +231,16 @@ CLOUDINARY_STORAGE = {
     'API_KEY':config('CLOUDINARY_APIKEY'),
     'API_SECRET':config('CLOUDINARY_APISECRET')
 }
+
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+
+# Paypal.
+PAYPAL_API_USERNAME=config('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD=config('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE=config('PAYPAL_API_SIGNATURE')
+
+OSCAR_DEFAULT_CURRENCY = 'USD'

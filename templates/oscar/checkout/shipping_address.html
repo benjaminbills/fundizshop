@@ -1,5 +1,8 @@
 {% extends "oscar/checkout/checkout.html" %}
 {% load i18n %}
+{% load djmoney %}
+
+{% money_localize money %}
 
 {% block title %}
     {% trans "Shipping address" %} | {{ block.super }}
