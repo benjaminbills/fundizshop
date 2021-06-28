@@ -3255,15 +3255,16 @@ fieldset:disabled a.btn {
 .payment{
   margin-top: 40px;
 }
+
 .paypal-btn{
   margin-bottom: 20px;
-  border:1px solid black;
+  border:1px solid #343a40;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  /* background-color:black; */
+  background-color:#f8f9fa;
 }
 .paypal-logo{
   width: 60px;
@@ -3271,18 +3272,19 @@ fieldset:disabled a.btn {
 }
 .mpesa-btn{
   margin-bottom: 40px;
-  border:1px solid black;
+  border:1px solid #343a40;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  background-color:#f8f9fa;
 }
 .mpesa-logo{
   width: 60px;
   height: auto;
 }
-
+/* End of added payment  */
 .btn-outline-dark {
   color: #343a40;
   border-color: #343a40;
