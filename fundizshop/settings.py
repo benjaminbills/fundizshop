@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'mpesa',
     'paypal',
+    'rest_framework',
 ]
 
 SITE_ID = 1
