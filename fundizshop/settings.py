@@ -14,7 +14,17 @@ from pathlib import Path
 from oscar.defaults import *
 import os
 from decouple import config,Csv
+import moneyed
 
+KSH = moneyed.add_currency(
+    code='KSH',
+    numeric='254',
+    name='Money',
+    countries=('KENYA', )
+)
+
+CURRENCIES = ('USD', 'EUR', 'KSH')
+CURRENCY_CHOICES = [('USD', 'USD $'), ('EUR', 'EUR €', 'KSH', 'KSH /=')]
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,6 +94,8 @@ INSTALLED_APPS = [
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
+    'djmoney',
+    
 ]
 
 SITE_ID = 1
