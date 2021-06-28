@@ -3251,6 +3251,30 @@ fieldset:disabled a.btn {
 .show>.btn-outline-light.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
 }
+/* Payment Section  */
+.paypal-btn{
+  margin-bottom: 20px;
+  border:1px solid black;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  /* background-color:black; */
+}
+.paypal-logo{
+  width: 70px;
+  height: auto;
+}
+.mpesa-btn{
+  margin-bottom: 20px;
+  border:1px solid black;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.mpesa-logo{
+  width: 70px;
+  height: auto;
+}
 
 .btn-outline-dark {
   color: #343a40;
