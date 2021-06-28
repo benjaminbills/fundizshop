@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class LNMOnline(models.Model):
     CheckoutRequestID = models.CharField(max_length=50, blank=True, null=True)
@@ -15,8 +16,9 @@ class LNMOnline(models.Model):
     def __str__(self):
         return f"{self.PhoneNumber} has sent {self.Amount} >> {self.MpesaReceiptNumber}"
 
+
 class C2BPayments(models.Model):
-    TransactionType =  models.CharField(max_length=12, blank=True, null=True)
+    TransactionType = models.CharField(max_length=12, blank=True, null=True)
     TransID = models.CharField(max_length=12, blank=True, null=True)
     TransTime = models.CharField(max_length=14, blank=True, null=True)
     TransAmount = models.CharField(max_length=12, blank=True, null=True)
