@@ -98,7 +98,7 @@
     {% block product_description %}
         {% if product.description %}
         <div id="product_description" class="sub-header">
-            <h2>{% trans "Product Description" %}</h2>
+            <h2 class="text-warning">{% trans "Product Description" %}</h2>
         </div>
         <p>{{ product.description|safe }}</p>
         {% endif %}
@@ -106,45 +106,39 @@
 
     {% block product_info %}
     <div class="sub-header">
-        <h2>{% trans "Product Information" %}</h2>
+        <h2 class="text-warning">{% trans "Product Information" %}</h2>
     </div>
     <table class="table table-striped">
         {% if product.upc %}
         <tr>
-            <th>{% trans "UPC" %}</th><td>{{ product.upc }}</td>
+            <th class="text-warning">{% trans "UPC" %}</th><td>{{ product.upc }}</td>
         </tr>
         {% endif %}
         <tr>
-            <th>{% trans "Product Type" %}</th><td>{{ product.get_product_class.name }}</td>
+            <th class="text-warning">{% trans "Product Type" %}</th><td>{{ product.get_product_class.name }}</td>
         </tr>
 
         {% purchase_info_for_product request product as session %}
         {% if session.price.exists %}
-            <tr>
-                <th>{% trans "Price (excl. tax)" %}</th><td>{{ session.price.excl_tax|currency:session.price.currency }}</td>
-            </tr>
             {% if session.price.is_tax_known %}
                 <tr>
-                    <th>{% trans "Price (incl. tax)" %}</th><td>{{ session.price.incl_tax|currency:session.price.currency }}</td>
-                </tr>
-                <tr>
-                    <th>{% trans "Tax" %}</th><td>{{ session.price.tax|currency:session.price.currency }}</td>
+                    <th class="text-warning">{% trans "Price" %}</th><td>{{ session.price.incl_tax|currency:session.price.currency }}</td>
                 </tr>
             {% endif %}
             <tr>
-                <th>{% trans "Availability" %}</th>
+                <th class="text-warning">{% trans "Availability" %}</th>
                 <td>{{ session.availability.message }}</td>
             </tr>
         {% endif %}
         {% for av in product.get_attribute_values %}
             <tr>
-                <th>{{ av.attribute.name }}</th>
+                <th class="text-warning">{{ av.attribute.name }}</th>
                 <td>{{ av.value_as_html }}</td>
             </tr>
         {% endfor %}
         {% iffeature "reviews" %}
             <tr>
-                <th>{% trans "Number of reviews" %}</th>
+                <th class="text-warning">{% trans "Number of reviews" %}</th>
                 <td>{{ product.num_approved_reviews }}</td>
             </tr>
         {% endiffeature %}
@@ -158,7 +152,7 @@
                 {% if product.num_approved_reviews > 3 %}
                     <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="btn float-right">{% trans "See all reviews" %}</a>
                 {% endif %}
-                <h2>{% trans "Customer Reviews" %}</h2>
+                <h2 class="text-warning">{% trans "Customer Reviews" %}</h2>
             </div>
 
             {% if product.num_approved_reviews == 0 %}
@@ -188,7 +182,7 @@
     {% with recommended_products=product.sorted_recommended_products|slice:":6" %}
         {% if recommended_products %}
             <div class="sub-header">
-                <h2>{% trans "Recommended items" %}</h2>
+                <h2 class="text-warning">{% trans "Recommended items" %}</h2>
             </div>
             <ul class="row list-unstyled mx-0">
                 {% for product in recommended_products %}
@@ -199,8 +193,10 @@
             </ul>
         {% endif %}
     {% endwith %}
-
-    {% recently_viewed_products current_product=product %}
+    <div class="text-warning">
+        {% recently_viewed_products current_product=product %}
+    </div>
+    
 
 </article><!-- End of product page -->
 {% endblock content %}
