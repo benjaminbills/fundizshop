@@ -17,13 +17,13 @@ def lipa_na_mpesa():
     headers = {"Authorization": "Bearer %s" % access_token}
 
     request = {
-        "BusinessShortCode": keys.business_shortCode,
+        "BusinessShortCode": keys.business_short_code,
         "Password": decoded_password,
         "Timestamp": formatted_time,
         "TransactionType": "CustomerPayBillOnline",
         "Amount": "3",
         "PartyA": keys.phone_number,
-        "PartyB": keys.business_shortCode,
+        "PartyB": keys.business_short_code,
         "PhoneNumber": keys.phone_number,
         "CallBackURL": "https://mysterious-oasis-16355.herokuapp.com/api/payments/lnm/",
         "AccountReference": "test aware",

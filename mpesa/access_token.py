@@ -14,7 +14,7 @@ def generate_access_token():
     except:
         r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
 
-    print(r.text)
+    # print(r.text)
 
     json_response = (r.json())
 
@@ -23,4 +23,3 @@ def generate_access_token():
     return my_access_token
 
 
-generate_access_token()
