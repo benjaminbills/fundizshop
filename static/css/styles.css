@@ -17422,6 +17422,14 @@ body {
 .product_pod .price_color {
   color: black;
   font-weight: bold;
+  font-size: 14px;
+}
+/* Product info flex  */
+.product_price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .product_pod .availability,
@@ -17475,7 +17483,7 @@ a:hover .thumbnail {
 .availability.instock {
   color: #28a745;
   font-weight: lighter;
-  font-size: normal;
+  font-size: 14px;
 }
 
 .price_color {

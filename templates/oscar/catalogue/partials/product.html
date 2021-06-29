@@ -6,7 +6,7 @@
 {% block product %}
     <article class="product_pod">
         {% block product_image %}
-            <div class="image_container w-100">
+            <div class="image_container">
                 {% with image=product.primary_image %}
                     {% oscar_thumbnail image.original "x155" upscale=False as thumb %}
                     <a href="{{ product.get_absolute_url }}">
@@ -37,7 +37,7 @@
         {% endblock %}
 
         {% block product_price %}
-            <div class="product_price w-100">
+            <div class="product_price">
                 {% include "oscar/catalogue/partials/stock_record.html" %}
                 {% if not product.is_parent and not product.has_options %}
                     {% include "oscar/catalogue/partials/add_to_basket_form_compact.html" %}
