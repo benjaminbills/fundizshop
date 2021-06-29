@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['f105e5bfa5b6.ngrok.io']
 
 # Application definition
 
@@ -90,11 +90,11 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-# REST_FRAMEWORK = {
-#     "DEFAULT_PERMISSION_CLASSES": [
-#         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
-#     ]
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ]
+}
 
 SITE_ID = 1
 
