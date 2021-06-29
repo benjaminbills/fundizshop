@@ -27,5 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkout/paypal/', include('paypal.express.urls')),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/mpesa', include('mpesa.urls')),
     path('__debug__/',include(debug_toolbar.urls))
 ]
