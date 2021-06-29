@@ -7,10 +7,12 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 import pytz
 from datetime import datetime
+from rest_framework import generics
+
 
 
 # Create your views here.
-class LNMCallbackUrlAPIView(CreateAPIView):
+class LNMCallbackUrlAPIView(generics.ListCreateAPIView):
     queryset = LNMOnline.objects.all()
     serializer_class = LNMOnlineSerializer
     permission_classes = [AllowAny]
