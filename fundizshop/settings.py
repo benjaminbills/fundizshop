@@ -153,6 +153,15 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DEBUG = config('DEBUG')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'fundi',
+#         'USER': 'maryam',
+#     'PASSWORD':'1234',
+#     }
+# }
 #development
 if config('MODE')=="dev":
    DATABASES = {
