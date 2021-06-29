@@ -241,3 +241,5 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+OSCAR_SHOP_NAME = 'Fundizshop'
