@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     'mpesa',
     'paypal',
     'rest_framework',
+    'debug_toolbar'
 ]
 
 REST_FRAMEWORK = {
@@ -99,6 +100,7 @@ REST_FRAMEWORK = {
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -236,3 +238,14 @@ PAYPAL_API_PASSWORD = config('PAYPAL_API_PASSWORD')
 PAYPAL_API_SIGNATURE = config('PAYPAL_API_SIGNATURE')
 
 OSCAR_DEFAULT_CURRENCY = 'USD'
+
+
+OSCAR_DEFAULT_CURRENCY = 'USD'
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
+OSCAR_SHOP_NAME = 'Fundizshop'
