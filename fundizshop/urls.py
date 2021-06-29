@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import debug_toolbar
 from django.apps import apps
 from django.urls import include, path
 from django.contrib import admin
@@ -26,4 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkout/paypal/', include('paypal.express.urls')),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path('__debug__/',include(debug_toolbar.urls))
 ]

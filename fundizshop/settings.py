@@ -87,11 +87,13 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'paypal',
+    'debug_toolbar'
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -231,4 +233,11 @@ PAYPAL_API_USERNAME=config('PAYPAL_API_USERNAME')
 PAYPAL_API_PASSWORD=config('PAYPAL_API_PASSWORD')
 PAYPAL_API_SIGNATURE=config('PAYPAL_API_SIGNATURE')
 
+
 OSCAR_DEFAULT_CURRENCY = 'USD'
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
