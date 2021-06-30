@@ -99,6 +99,7 @@ INSTALLED_APPS = [
     'djmoney',
     
     'paypal',
+    'adyen'
 ]
 
 SITE_ID = 1
