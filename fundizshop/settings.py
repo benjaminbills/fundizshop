@@ -13,20 +13,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from oscar.defaults import *
 import os
-from decouple import config,Csv
-import moneyed
-import django_heroku
+from decouple import config, Csv
+# import moneyed
+# import django_heroku
 import dj_database_url
 
-KSH = moneyed.add_currency(
-    code='KSH',
-    numeric='254',
-    name='Money',
-    countries=('KENYA', )
-)
+# KSH = moneyed.add_currency(
+#     code='KSH',
+#     numeric='254',
+#     name='Money',
+#     countries=('KENYA', )
+# )
 
-CURRENCIES = ('USD', 'EUR', 'KSH')
-CURRENCY_CHOICES = [('USD', 'USD $'), ('EUR', 'EUR €', 'KSH', 'KSH /=')]
+# CURRENCIES = ('USD', 'EUR', 'KSH')
+# CURRENCY_CHOICES = [('USD', 'USD $'), ('EUR', 'EUR €', 'KSH', 'KSH /=')]
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,7 +42,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -92,7 +91,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'haystack',
     'treebeard',
-    'sorl.thumbnail',   # Default thumbnail backend, can be replaced
+    'sorl.thumbnail',  # Default thumbnail backend, can be replaced
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
@@ -100,11 +99,22 @@ INSTALLED_APPS = [
     
     'paypal',
     'adyen'
+    'mpesa',
+    'paypal',
+    'rest_framework',
+    'debug_toolbar'
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ]
+}
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -149,7 +159,6 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -182,9 +191,17 @@ else:
         )
     }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=config('DATABASE_URL')
+#         )
+#     }
+
+# db_from_env = dj_database_url.config(conn_max_age=500)
+
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -210,7 +227,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -224,7 +240,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -237,9 +252,9 @@ MEDIA_URL = '/Fundizshop/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME':config('CLOUD_NAME'),
-    'API_KEY':config('CLOUDINARY_APIKEY'),
-    'API_SECRET':config('CLOUDINARY_APISECRET')
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_APIKEY'),
+    'API_SECRET': config('CLOUDINARY_APISECRET')
 }
 
 EMAIL_PORT = config('EMAIL_PORT')
@@ -249,8 +264,19 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 # Paypal.
-PAYPAL_API_USERNAME=config('PAYPAL_API_USERNAME')
-PAYPAL_API_PASSWORD=config('PAYPAL_API_PASSWORD')
-PAYPAL_API_SIGNATURE=config('PAYPAL_API_SIGNATURE')
+PAYPAL_API_USERNAME = config('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD = config('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE = config('PAYPAL_API_SIGNATURE')
 
 OSCAR_DEFAULT_CURRENCY = 'USD'
+
+
+OSCAR_DEFAULT_CURRENCY = 'USD'
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
+OSCAR_SHOP_NAME = 'Fundizshop'
