@@ -4,6 +4,12 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+/* @import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome"; */
+
+ 
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -2623,6 +2629,7 @@ textarea.form-control.is-invalid {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* margin-top: 20px; */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2707,14 +2714,14 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #e0a800;
+  border-color: #e0a800;
 }
 
 .btn-secondary:focus,
@@ -3042,12 +3049,12 @@ fieldset:disabled a.btn {
 
 .btn-outline-secondary:focus,
 .btn-outline-secondary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 181, 48, 0.5);
 }
 
 .btn-outline-secondary.disabled,
 .btn-outline-secondary:disabled {
-  color: #6c757d;
+  color: #ffb530;
   background-color: transparent;
 }
 
@@ -3055,14 +3062,14 @@ fieldset:disabled a.btn {
 .btn-outline-secondary:not(:disabled):not(.disabled).active,
 .show>.btn-outline-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
 .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
 .show>.btn-outline-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 181, 48, 0.5);
 }
 
 .btn-outline-success {
@@ -3244,7 +3251,40 @@ fieldset:disabled a.btn {
 .show>.btn-outline-light.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
 }
+/* Payment Section  */
+.payment{
+  margin-top: 40px;
+}
 
+.paypal-btn{
+  margin-bottom: 20px;
+  border:1px solid #343a40;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color:#f8f9fa;
+}
+.paypal-logo{
+  width: 60px;
+  height: auto;
+}
+.mpesa-btn{
+  margin-bottom: 40px;
+  border:1px solid #343a40;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color:#f8f9fa;
+}
+.mpesa-logo{
+  width: 60px;
+  height: auto;
+}
+/* End of added payment  */
 .btn-outline-dark {
   color: #343a40;
   border-color: #343a40;
@@ -3252,13 +3292,13 @@ fieldset:disabled a.btn {
 
 .btn-outline-dark:hover {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #ffc107;
+  border-color: #ffc107;
 }
 
 .btn-outline-dark:focus,
 .btn-outline-dark.focus {
-  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
 }
 
 .btn-outline-dark.disabled,
@@ -17102,7 +17142,7 @@ input[type="number"][id*="quantity"] {
 }
 
 .nav-checkout .active .navbar-text {
-  color: #fff;
+  color: black;
 }
 
 .nav-checkout .nav-item {
@@ -17242,7 +17282,7 @@ form::after {
 }
 
 .basket-mini-item a {
-  color: #007bff;
+  color: black;
   font-weight: inherit;
   white-space: normal;
 }
@@ -17382,6 +17422,14 @@ body {
 .product_pod .price_color {
   color: black;
   font-weight: bold;
+  font-size: 14px;
+}
+/* Product info flex  */
+.product_price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .product_pod .availability,
@@ -17435,13 +17483,13 @@ a:hover .thumbnail {
 .availability.instock {
   color: #28a745;
   font-weight: lighter;
-  font-size: normal;
+  font-size: 14px;
 }
 
 .price_color {
   display: block;
   color: #ffb530;
-  font-size: small;
+  font-size:12px;
 }
 
 .product_main .price_color {
