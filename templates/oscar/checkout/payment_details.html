@@ -1,6 +1,7 @@
 
 {% extends "oscar/checkout/checkout.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}
     {% trans "Payment details" %} | {{ block.super }}
@@ -19,12 +20,26 @@
 
 {% block payment_details %}
     {% block payment_details_content %}
-        <ul>
-            {% if anon_checkout_allowed or request.user.is_authenticated %}
-                <a href="{% url 'paypal-redirect' %}"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"></a>
-            {% endif %}
-        </ul>
-        <div id="paypal-button-container"></div>
+        <!-- <p>{% trans "This page needs implementing within your project.  You may want to use one of Oscar's payment gateway libraries:" %}</p> -->
+        <!-- <ul>
+            <li><a href="https://github.com/django-oscar/django-oscar-paypal">django-oscar-paypal</a></li>
+            <li><a href="https://github.com/django-oscar/django-oscar-adyen">django-oscar-adyen</a></li>
+            <li><a href="https://github.com/django-oscar/django-oscar-docdata">django-oscar-docdata</a></li>
+            <li><a href="https://github.com/django-oscar/django-oscar-accounts">django-oscar-accounts</a></li>
+        </ul> -->
+        <div class="payment">
+            <div class="paypal-btn">
+                <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo</a>
+            </div>
+            <div class="paypal-btn">
+                <a class="ml-2 mt-2 paypal-link" href="#">Paypal</a>
+                <img src="{% static 'img/paypal.png'%}" alt="paypal_logo" class="paypal-logo img-fluid">
+            </div>
+            <div class="mpesa-btn">
+                <a class="ml-2 mt-2 mpesa-link" href="#">Mpesa</a>
+                <img src="{% static 'img/mpesa.png'%}" alt="paypal_logo" class="mpesa-logo img-fluid">
+            </div>
+        </div>
         <a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-outline-dark btn-lg">{% trans "Continue" %}</a>
         <script src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
 

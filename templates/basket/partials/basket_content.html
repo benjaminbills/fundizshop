@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 {% load i18n %}
 {% load image_tags %}
 {% load currency_filters %}
 {% load purchase_info_tags %}
 {% load widget_tweaks %}
 
-<p style="color: rgb(119, 119, 119);">Price can change depending on shipping method and taxes in your country.</p>
 {% if basket_warnings %}
     <h5>{% trans "Important messages about items in your basket" %}</h5>
     {% for warning in basket_warnings %}
@@ -25,7 +23,16 @@
 {% endif %}
 
 {% if not basket.is_empty %}
-    
+    {% block basket_form_headers %}
+        <div class="basket-title d-none d-md-block">
+            <div class="row">
+                <h4 class="col-md-6">{% trans "Items to buy now" %}</h4>
+                <h4 class="col-md-3">{% trans "Quantity" %}</h4>
+                <h4 class="col-md-1 text-right">{% trans "Price" %}</h4>
+                <h4 class="col-md-2 text-right">{% trans "Total" %}</h4>
+            </div>
+        </div>
+    {% endblock %}
 
     {% block basket_form_main %}
         <form method="post" class="basket_summary" id="basket_formset">
@@ -35,72 +42,76 @@
             {% for form in formset %}
                 {% with line=form.instance product=form.instance.product %}
                     {% purchase_info_for_line request line as session %}
-                    <div>
+                    <div class="basket-items">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-2">
                                 {{ form.id }}
                                 {% with image=product.primary_image %}
-                                    {% oscar_thumbnail image.original "300x300" upscale=False as thumb %}
+                                    {% oscar_thumbnail image.original "100x100" upscale=False as thumb %}
                                     <a href="{{ product.get_absolute_url }}">
-                                        <img class="img-thumbnail" src="{{ thumb.url }}" alt="{{ product.get_title }}"/>
+                                        <img class="img-thumbnail w-auto mx-auto my-0" src="{{ thumb.url }}" alt="{{ product.get_title }}"/>
                                     </a>
                                 {% endwith %}
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <h3><a href="{{ product.get_absolute_url }}">{{ line.description }}</a></h3>
-                                <p class="availability text-dark {{ session.availability.code }}">{{ session.availability.message }}</p>
-                                <p><small class="text-secondary">Vendor: FundizShop</small></p>
+                                <p class="availability {{ session.availability.code }}">{{ session.availability.message }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="checkout-quantity">
+                                    <div class="input-group {% if form.errors %}error{% endif %}">
+                                        {% render_field form.quantity class+="form-control" %}
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit" data-loading-text="{% trans 'Updating...' %}">{% trans "Update" %}</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                    <div class="basket-line-actions">
+                                        <a href="#" data-id="{{ forloop.counter0 }}" data-behaviours="remove">{% trans "Remove" %}</a>
+                                        {% if user.is_authenticated %}
+                                            | <a href="#" data-id="{{ forloop.counter0 }}" data-behaviours="save">{% trans "Save for later" %}</a>
+                                        {% endif %}
+                                        <div style="display:none">
+                                            {{ form.save_for_later }}
+                                            {{ form.DELETE }}
+                                        </div>
+                                        {% for field_errors in form.errors.values %}
+                                            {% for error in field_errors %}
+                                                <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
+                                            {% endfor %}
+
+                                        {% endfor %}
+                                    </div>
+
+                            </div>
+                            <div class="col-md-1">
                                 {% if not line.unit_price_incl_tax and not line.unit_tax_excl_tax %}
-                                    <p class="">&mdash;</p>
+                                    <p class="text-right">&mdash;</p>
                                 {% else %}
-                                    <p class="price_color text-warning" style="font-size: larger;">
-                                        <span class="price-title text-dark">{% trans "Price" %}:</span>
+                                    <p class="price_color text-right">
+                                        <span class="price-title d-md-none">{% trans "Price" %}:</span>
                                         {% if line.is_tax_known %}
-                                                {{ line.unit_price_incl_tax|currency:line.price_currency }}
+                                            {{ line.unit_price_incl_tax|currency:line.price_currency }}
                                         {% else %}
                                             {{ line.unit_price_excl_tax|currency:line.price_currency }}
                                         {% endif %}
                                     </p>
                                 {% endif %}
-                                <div class="checkout-quantity">
-                                        <div class="input-group {% if form.errors %}error{% endif %}">
-                                            {% render_field form.quantity class+="form-control" %}
-                                        <div class="input-group-append">
-                                            <button class="btn btn-warning" type="submit" data-loading-text="{% trans 'Updating...' %}">{% trans "Update" %}</button>
-                                        </div>
-                                        </div>
-                                </div>
-                                <div class="basket-line-actions">
-                                    <a href="#" data-id="{{ forloop.counter0 }}" data-behaviours="remove">{% trans "Remove" %}</a>
-                                    {% if user.is_authenticated %}
-                                        | <a href="#" data-id="{{ forloop.counter0 }}" data-behaviours="save">{% trans "Save for later" %}</a>
-                                    {% endif %}
-                                    <div style="display:none">
-                                        {{ form.save_for_later }}
-                                        {{ form.DELETE }}
-                                    </div>
-                                    {% for field_errors in form.errors.values %}
-                                        {% for error in field_errors %}
-                                            <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
-                                        {% endfor %}
+                            </div>
+                            <div class="col-md-2">
 
-                                    {% endfor %}
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    {% if not line.line_price_incl_tax and not line_price_excl_tax %}
-                                        <p>&mdash;</p>
-                                    {% else %}
-                                        <p class="price_color text-warning" style="font-size: larger;">
-                                            <span class="price-title text-dark">{% trans "Total" %}:</span>
+                                {% if not line.line_price_incl_tax and not line_price_excl_tax %}
+                                    <p class="text-right">&mdash;</p>
+                                {% else %}
+                                    <p class="price_color text-right">
+                                        <span class="price-title d-md-none">{% trans "Total" %}:</span>
                                         {% if line.is_tax_known %}
                                             {{ line.line_price_incl_tax|currency:line.price_currency }}
                                         {% else %}
                                             {{ line.line_price_excl_tax|currency:line.price_currency }}
                                         {% endif %}
                                     </p>
-                                    {% endif %}
-                                </div>
-                                
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -109,36 +120,37 @@
         </form>
     {% endblock %}
 
-        <div class="row">
+    <div class="row">
         {% block vouchers %}
             {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
             {% if voucher_form %}
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <div class="sub-header">
                         <h2>{% trans "Voucher/promo code" %}</h2>
                     </div>
-                    <p id="voucher_form_link"><a href="#voucher" class="btn btn-warning btn-full">{% trans "I have a voucher code..." %}</a></p>
+                    <p id="voucher_form_link"><a href="#voucher" class="btn btn-secondary btn-full">{% trans "I have a voucher code..." %}</a></p>
 
                     <div id="voucher_form_container" style="display:none">
                         <form id="voucher_form" action="{% url 'basket:vouchers-add' %}" method="post">
                             {% csrf_token %}
                             {% include "oscar/partials/form_fields.html" with form=voucher_form %}
-                            <button type="submit" class="btn btn-warning" data-loading-text="{% trans 'Adding...' %}">{% trans "Add voucher" %}</button>
+                            <button type="submit" class="btn btn-info" data-loading-text="{% trans 'Adding...' %}">{% trans "Add voucher" %}</button>
                             {% trans "or" %} <a href="#" id="voucher_form_cancel">{% trans "cancel" %}</a>
                         </form>
                     </div>
                 </div>
             {% endif %}
         {% endblock vouchers %}
-        </div>
 
         {% block baskettotals %}
-            <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="sub-header">
+                    <h2>{% trans "Totals" %}</h2>
+                </div>
                 {% include 'oscar/basket/partials/basket_totals.html' with editable=1 %}
             </div>
         {% endblock baskettotals %}
-
-        
+    </div>
 
 
     {% block formactions %}
@@ -215,16 +227,4 @@
             </form>
         </div>
     {% endif %}
-=======
-{% extends 'oscar/basket/partials/basket_content.html' %}
-{% load i18n %}
-
-{% block formactions %}
-<div class="form-actions">
-    {% if anon_checkout_allowed or request.user.is_authenticated %}
-        <a href="{% url 'paypal-redirect' %}"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"></a>
-    {% endif %}
-    <a href="{% url 'checkout:index' %}" class="pull-right btn btn-large btn-primary">{% trans "Proceed to checkout" %}</a>
-</div>
->>>>>>> master
 {% endblock %}
