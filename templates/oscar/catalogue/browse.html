@@ -25,6 +25,30 @@
     {% if tree_categories %}
         <h4>{% trans "Show results for" %}</h4>
         <div class="side_categories card card-body">
+            <!-- <ul class="nav nav-list">
+                {% for tree_category in tree_categories %}
+                    <li class="mt-2">
+                        <a href="{{ tree_category.url }}">
+                            {% if tree_category.pk == category.pk %}
+                                <strong>{{ tree_category.name }}</strong>
+                            {% else %}
+                                {{ tree_category.name }}
+                            {% endif %}
+                        </a>
+                    
+                        {% if tree_category.has_children %}
+                        <ul>
+                        {% else %}
+
+                        </li>
+                        {% endif %}
+                        {% for n in tree_category.num_to_close %}
+                        </ul>
+                        </li><br>
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul> -->
             <ul class="nav nav-list">
                 {% for tree_category in tree_categories %}
                     <li class="mt-2">
@@ -98,7 +122,7 @@
                 <!-- <ol class="row list-unstyled ml-0 pl-0"> -->
                     {% for product in products %}
                         <!-- <li class="col-sm-6 col-md-4 col-lg-3">{% render_product product %}</li> -->
-                    <div class="card product_card">
+                    <div class="card product_card mt-2">
                       <div class="card-body">
                         {% render_product product %}
                       </div>

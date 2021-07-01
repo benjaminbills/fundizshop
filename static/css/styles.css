@@ -17453,7 +17453,8 @@ body {
 .product_flex{
   display: flex;
   flex-wrap: wrap;
-  column-gap: 20px;
+  justify-content: space-evenly;
+  /* column-gap: 20px; */
 }
 .product_pod .product_price {
   position: absolute;
