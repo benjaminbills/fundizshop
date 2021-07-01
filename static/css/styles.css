@@ -2719,7 +2719,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-secondary:hover {
-  color: #fff;
+  color: black;
   background-color: #e0a800;
   border-color: #e0a800;
 }
@@ -2727,8 +2727,8 @@ fieldset:disabled a.btn {
 .btn-secondary:focus,
 .btn-secondary.focus {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color:#ffb530;
+  border-color: #ffb530;
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
@@ -2742,15 +2742,15 @@ fieldset:disabled a.btn {
 .btn-secondary:not(:disabled):not(.disabled):active,
 .btn-secondary:not(:disabled):not(.disabled).active,
 .show>.btn-secondary.dropdown-toggle {
-  color: #fff;
-  background-color: #545b62;
-  border-color: #4e555b;
+  color:black;
+  background-color: #ffb530;
+  border-color: #ffb530;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):active:focus,
 .btn-secondary:not(:disabled):not(.disabled).active:focus,
 .show>.btn-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 181, 48);
 }
 
 .btn-success {
@@ -2836,15 +2836,21 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #212529;
+  color: #ffff;
   background-color: #ffc107;
   border-color: #ffc107;
 }
 
 .btn-warning:hover {
+<<<<<<< HEAD
   color: #212529;
   background-color: #e0a800;
   border-color: #e0a800;
+=======
+  color:black;
+  background-color:#E5A22B;
+  border-color: #E5A22B;
+>>>>>>> homepage
 }
 
 .btn-warning:focus,
@@ -3036,15 +3042,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary {
-  color: black;
+  color: white;
   border-color: #ffb530;
   background-color:#ffb530;
 }
 
 .btn-outline-secondary:hover {
-  color: #ffb530;
-  border-color: #ffb530;
-  background-color: #f8f9f8;
+  color:black;
+  border-color: #E5A22B;
+  background-color: #E5A22B;
 }
 
 .btn-outline-secondary:focus,
@@ -3286,15 +3292,15 @@ fieldset:disabled a.btn {
 }
 /* End of added payment  */
 .btn-outline-dark {
-  color: white;
-  border-color:#ffc107;
-  background-color:#ffc107;
+  color: #fff;
+  border-color: #ffc107;
+  background-color: #ffc107;
 }
 
 .btn-outline-dark:hover {
-  color:#000;
-  background-color: #e5a22b;
-  border-color: #e5a22b;
+  color: black;
+  background-color: #E5A22B;
+  border-color: #E5A22B;
 }
 
 .btn-outline-dark:focus,
@@ -17423,6 +17429,14 @@ body {
 .product_pod .price_color {
   color: black;
   font-weight: bold;
+  font-size: 14px;
+}
+/* Product info flex  */
+.product_price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .product_pod .availability,
@@ -17476,7 +17490,7 @@ a:hover .thumbnail {
 .availability.instock {
   color: #28a745;
   font-weight: lighter;
-  font-size: normal;
+  font-size: 14px;
 }
 
 .price_color {
