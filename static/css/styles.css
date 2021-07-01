@@ -3036,15 +3036,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary {
-  color: black;
+  color: white;
   border-color: #ffb530;
   background-color:#ffb530;
 }
 
 .btn-outline-secondary:hover {
-  color: #ffb530;
-  border-color: #ffb530;
-  background-color: #f8f9f8;
+  color:black;
+  border-color: #E5A22B;
+  background-color: #E5A22B;
 }
 
 .btn-outline-secondary:focus,
