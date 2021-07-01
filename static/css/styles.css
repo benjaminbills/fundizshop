@@ -2836,15 +2836,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #212529;
+  color: #ffff;
   background-color: #ffc107;
   border-color: #ffc107;
 }
 
 .btn-warning:hover {
-  color: #212529;
-  background-color: #e0a800;
-  border-color: #d39e00;
+  color:black;
+  background-color:#E5A22B;
+  border-color: #E5A22B;
 }
 
 .btn-warning:focus,
@@ -3286,14 +3286,15 @@ fieldset:disabled a.btn {
 }
 /* End of added payment  */
 .btn-outline-dark {
-  color: #343a40;
-  border-color: #343a40;
+  color: #fff;
+  border-color: #ffc107;
+  background-color: #ffc107;
 }
 
 .btn-outline-dark:hover {
-  color: #fff;
-  background-color: #ffc107;
-  border-color: #ffc107;
+  color: black;
+  background-color: #E5A22B;
+  border-color: #E5A22B;
 }
 
 .btn-outline-dark:focus,
