@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from oscar.defaults import *
 import os
-from decouple import config,Csv
+from decouple import config, Csv
+# import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,8 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -80,15 +81,27 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'haystack',
     'treebeard',
-    'sorl.thumbnail',   # Default thumbnail backend, can be replaced
+    'sorl.thumbnail',  # Default thumbnail backend, can be replaced
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
+    'mpesa',
+    'paypal',
+    'transaction',
+    'rest_framework',
+    'debug_toolbar'
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ]
+}
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,6 +111,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'fundizshop.urls'
@@ -131,19 +146,32 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fundizshop',
-        'USER': 'joykirii',
-        'PASSWORD': 'kirii',
-    }
-}
+DEBUG = config('DEBUG')
+# development
+if config('MODE')=="dev":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'PORT': '',
+        }
 
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
+    }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -169,7 +197,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -183,7 +210,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -196,7 +222,31 @@ MEDIA_URL = '/Fundizshop/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME':config('CLOUD_NAME'),
-    'API_KEY':config('CLOUDINARY_APIKEY'),
-    'API_SECRET':config('CLOUDINARY_APISECRET')
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_APIKEY'),
+    'API_SECRET': config('CLOUDINARY_APISECRET')
 }
+
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+
+# Paypal.
+PAYPAL_API_USERNAME = config('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD = config('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE = config('PAYPAL_API_SIGNATURE')
+
+OSCAR_DEFAULT_CURRENCY = 'USD'
+
+
+OSCAR_DEFAULT_CURRENCY = 'USD'
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
+OSCAR_SHOP_NAME = 'Fundizshop'
