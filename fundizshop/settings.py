@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'mpesa',
     'paypal',
+    'transaction',
     'rest_framework',
     'debug_toolbar'
 ]
