@@ -35,7 +35,7 @@
                 {% with line=form.instance product=form.instance.product %}
                     {% purchase_info_for_line request line as session %}
                     <div>
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col-md-6">
                                 {{ form.id }}
                                 {% with image=product.primary_image %}
@@ -47,8 +47,7 @@
                             </div>
                             <div class="col-md-6">
                                 <h3><a href="{{ product.get_absolute_url }}">{{ line.description }}</a></h3>
-                                <p class="availability text-dark {{ session.availability.code }}">{{ session.availability.message }}</p>
-                                <p><small class="text-secondary">Vendor: FundizShop</small></p>
+                                <p class="availability {{ session.availability.code }}">{{ session.availability.message }}</p>
                                 {% if not line.unit_price_incl_tax and not line.unit_tax_excl_tax %}
                                     <p class="">&mdash;</p>
                                 {% else %}
@@ -99,7 +98,6 @@
                                     </p>
                                     {% endif %}
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
