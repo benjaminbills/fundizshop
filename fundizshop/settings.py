@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'paypal',
+    'transaction',
 ]
 
 SITE_ID = 1

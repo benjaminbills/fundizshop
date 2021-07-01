@@ -155,6 +155,7 @@
         {% endfor %}
 
         {% block basket_totals %}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <div class="row">
                 <div class="col-sm-6">
                  <div id="paypal-button-container"></div>
@@ -191,7 +192,7 @@
                     <p><a onclick="window.print()" href="#" class="btn btn-primary btn-block btn-lg">{% trans "Print this page" %}</a></p>
                 </div>
                 <div class="col-sm-4 offset-sm-4">
-                    <p><a href="{{ homepage_url }}" class="btn btn-primary btn-block btn-lg">{% trans "Continue shopp" %}</a></p>
+                    <p><a href="{{ homepage_url }}" class="btn btn-primary btn-block btn-lg">{% trans "Continue shopping" %}</a></p>
                 </div>
             </div>
         </div>
@@ -216,21 +217,22 @@
            }
            var csrftoken = getCookie('csrftoken');
    
-           let total_to_ksh = total*10
-           console.log(total_to_ksh)
-            var productId = '{{product.id}}'
+           let total_to_usd = total/100
+           total_to_usd = Math.round((total_to_usd + Number.EPSILON)*100)/100
+           console.log(total_to_usd)
+            var orderId = '{{order.number}}'
    
             function completeOrder(){
                 console.log('finish');
-               
-   
+                
+                var url = "{% url 'complete' %}"
                 fetch(url, {
                     method:'POST',
                     headers:{
                         'Content-type':'application/json',
                         'X-CSRFToken':csrftoken,
                     },
-                    body:JSON.stringify({'productId':productId})
+                    body:JSON.stringify({'orderId':orderId, 'status':'success', 'paid':total_to_usd})
                 })
             }
    
@@ -240,25 +242,24 @@
    
                // Set up the transaction
                createOrder: function(data, actions) {
-                   return actions.order.create({
+                       return actions.order.create({
                        purchase_units: [{ 
                            amount: {
-                               value: total_to_ksh
+                               value: total_to_usd
                            }
                        }]
                    });
                },
-   
                // Finalize the transaction
                onApprove: function(data, actions) {
                    return actions.order.capture().then(function(details) {
                        // Show a success message to the buyer
                        completeOrder()
-                       alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                       Swal.fire('Transaction completed by ' + details.payer.name.given_name + '!', 'success');
+                       document.getElementById('paypal-button-container').style.display = 'none'
+                       window.location= "http://127.0.0.1:8000/";
                    });
                }
-   
-   
            }).render('#paypal-button-container');
        </script>
 {% endblock content %}

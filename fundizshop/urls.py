@@ -26,4 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkout/paypal/', include('paypal.express.urls')),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path('transaction/', include('transaction.urls')),
+
 ]

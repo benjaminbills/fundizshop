@@ -20,7 +20,9 @@
 {% block payment_details %}
     {% block payment_details_content %}
         <ul>
-            
+            {% if anon_checkout_allowed or request.user.is_authenticated %}
+                <a href="{% url 'paypal-redirect' %}"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"></a>
+            {% endif %}
         </ul>
         <div id="paypal-button-container"></div>
         <a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-outline-dark btn-lg">{% trans "Continue" %}</a>
