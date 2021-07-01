@@ -2,7 +2,7 @@
 {% load currency_filters %}
 {% load i18n %}
 {% load image_tags %}
-
+{% load static %}
 {% block title %}
     {% blocktrans with number=order.number %}
         Order {{ number }}: confirmation
@@ -156,10 +156,19 @@
 
         {% block basket_totals %}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-sm-6">
-                 <div id="paypal-button-container"></div>
-        <script src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
+                <div class="payment">
+                <div class="paypal-btn">
+                    <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo</a>
+                </div>
+                <div class="mpesa-btn">
+                    <a class="ml-2 mt-2 mpesa-link" href="#">Mpesa</a>
+                    <img src="{% static 'img/mpesa.png'%}" alt="paypal_logo" class="mpesa-logo img-fluid">
+                </div>
+            </div>
+            <div id="paypal-button-container"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
 
         
                 </div>
