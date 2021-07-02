@@ -95,7 +95,6 @@ INSTALLED_APPS = [
     'django_tables2',
     'cloudinary_storage',
     'cloudinary',
-    'djmoney',
     
     # 'adyen',
     'mpesa',
@@ -253,10 +252,7 @@ PAYPAL_API_USERNAME = config('PAYPAL_API_USERNAME')
 PAYPAL_API_PASSWORD = config('PAYPAL_API_PASSWORD')
 PAYPAL_API_SIGNATURE = config('PAYPAL_API_SIGNATURE')
 
-OSCAR_DEFAULT_CURRENCY = 'USD'
-
-
-OSCAR_DEFAULT_CURRENCY = 'USD'
+OSCAR_DEFAULT_CURRENCY = 'KSH'
 
 INTERNAL_IPS = [
     # ...
