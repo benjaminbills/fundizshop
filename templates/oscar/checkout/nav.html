@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<nav class="navbar navbar-static-top nav-checkout navbar-expand-md navbar-light bg-dark">
+<nav class="navbar navbar-static-top nav-checkout navbar-expand-md navbar-light bg-light">
     <ul class="navbar-nav mr-auto">
     {% spaceless %}
         <li class="nav-item step1 {% if step == 1 %}active{% else %}{% if step == 2 %}previous{% else %}{% if step > 1 %}visited{% else %}disabled{% endif %}{% endif %}{% endif %} ">
