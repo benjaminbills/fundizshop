@@ -4,6 +4,7 @@
 {% load purchase_info_tags %}
 {% load widget_tweaks %}
 
+
 <p style="color: rgb(119, 119, 119);">Price can change depending on shipping method and taxes in your country.</p>
 {% if basket_warnings %}
     <h5>{% trans "Important messages about items in your basket" %}</h5>
@@ -213,5 +214,4 @@
                 {% endfor %}
             </form>
         </div>
-    {% endif %}
 {% endblock %}
