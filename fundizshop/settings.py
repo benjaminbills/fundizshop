@@ -192,7 +192,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
