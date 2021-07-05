@@ -5014,14 +5014,14 @@ input[type="button"].btn-block {
   padding: 1.25rem;
 }
 
-.card-title {
+/* .card-title {
   margin-bottom: 0.75rem;
 }
 
 .card-subtitle {
   margin-top: -0.375rem;
   margin-bottom: 0;
-}
+} */
 
 .card-text:last-child {
   margin-bottom: 0;
@@ -5036,7 +5036,7 @@ input[type="button"].btn-block {
 }
 
 .card-header {
-  padding: 0.75rem 1.25rem;
+  /* padding: 0.75rem 1.25rem; */
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -17461,13 +17461,13 @@ body {
   bottom: 0;
 }
 /* Image thumbnail  */
-.image_container {
+/* .image_container {
   width: 100%;
   min-height: 165px;
   overflow: hidden;
   text-align: center;
   position: relative;
-}
+} */
 
 .image_container img {
   max-height: 155px;

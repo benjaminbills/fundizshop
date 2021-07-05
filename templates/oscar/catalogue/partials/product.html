@@ -11,7 +11,8 @@
                 {% with image=product.primary_image %}
                     {% oscar_thumbnail image.original "200x200" upscale=False as thumb %}
                     <a href="{{ product.get_absolute_url }}">
-                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="img-thumbnail w-auto mx-auto my-0">
+                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}"
+                            class="card-img-top img-fluid">
                     </a>
                 {% endwith %}
             </div>
