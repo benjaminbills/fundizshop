@@ -16,7 +16,7 @@ import os
 from decouple import config, Csv
 # import moneyed
 # import django_heroku
-import dj_database_url
+# import dj_database_url
 
 # KSH = moneyed.add_currency(
 #     code='KSH',
@@ -41,7 +41,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -161,27 +161,36 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DEBUG = config('DEBUG')
+DEBUG = True
 # development
-if config('MODE')=="dev":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'PORT': '',
-        }
+# if config('MODE')=="dev":
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': config('DB_NAME'),
+#             'USER': config('DB_USER'),
+#             'PASSWORD': config('DB_PASSWORD'),
+#             'PORT': '',
+#         }
 
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
+#     }
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=config('DATABASE_URL')
+#         )
+#     }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fundizshop',
+        'USER': 'joykirii',
+        'PASSWORD': 'kirii',
+    }
+}
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
