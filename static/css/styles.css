@@ -5011,7 +5011,7 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem;
+  /* padding: 1.25rem; */
 }
 
 .card-title {
@@ -17461,16 +17461,16 @@ body {
   bottom: 0;
 }
 /* Image thumbnail  */
-.image_container {
+/* .image_container {
   width: 100%;
   min-height: 165px;
   overflow: hidden;
   text-align: center;
   position: relative;
-}
+} */
 
 .image_container img {
-  max-height: 155px;
+  max-height: 300px;
   max-width: 100%;
 }
 
