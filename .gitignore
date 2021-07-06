@@ -132,5 +132,4 @@ dmypy.json
 .idea/*
 
 # Mpesa
-keys.py
-mpesa/keys.py
+start.sh

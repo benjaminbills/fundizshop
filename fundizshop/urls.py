@@ -29,6 +29,6 @@ urlpatterns = [
     path('', include(apps.get_app_config('oscar').urls[0])),
     path('transaction/', include('transaction.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/mpesa', include('mpesa.urls')),
+    path('api/payments', include('mpesa.urls')),
     path('__debug__/',include(debug_toolbar.urls))
 ]

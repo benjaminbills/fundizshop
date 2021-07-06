@@ -102,6 +102,7 @@ INSTALLED_APPS = [
     'transaction',
     'rest_framework',
     'debug_toolbar',
+    'bootstrap5'
 ]
 
 REST_FRAMEWORK = {
