@@ -137,8 +137,8 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fundizshop',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fundiz',
         'USER': 'joykirii',
         'PASSWORD': 'kirii',
     }
@@ -181,7 +181,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
