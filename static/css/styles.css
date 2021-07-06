@@ -4454,6 +4454,10 @@ input[type="button"].btn-block {
   cursor: default;
 }
 
+#side-link{
+  list-style-type: none;
+}
+
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
@@ -17470,7 +17474,7 @@ body {
 } */
 
 .image_container img {
-  max-height: 155px;
+  max-height: 200px;
   max-width: 100%;
 }
 

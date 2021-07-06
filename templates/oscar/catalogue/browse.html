@@ -49,7 +49,7 @@
                     </li>
                 {% endfor %}
             </ul> -->
-            <ul class="nav nav-list">
+            <ul class="side-link" id="side-link" style="list-style: none;">
                 {% for tree_category in tree_categories %}
                     <li class="mt-2">
                         <a href="{{ tree_category.url }}">
@@ -59,10 +59,11 @@
                                 {{ tree_category.name }}
                             {% endif %}
                         </a>
-
+                        <br>
                         {% if tree_category.has_children %}<ul>{% else %}</li>{% endif %}
                         {% for n in tree_category.num_to_close %}
-                            </ul></li>
+                            </ul>
+                            </li>
                         {% endfor %}
                 {% endfor %}
             </ul>
@@ -128,7 +129,7 @@
                       </div>
                     </div>
                     {% endfor %}
-                </ol>
+                <!-- </ol> -->
                 {% include "oscar/partials/pagination.html" %}
               
             </div>
