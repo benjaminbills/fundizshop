@@ -3265,12 +3265,27 @@ fieldset:disabled a.btn {
   display: flex;
   justify-content: space-between;
   background-color:#f8f9fa;
+  pointer-events: none;
+}
+.paypal-btn:hover {
+  
 }
 .paypal-logo{
   width: 60px;
   height: auto;
 }
 .mpesa-btn{
+  margin-bottom: 40px;
+  border:1px solid #343a40;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color:#f8f9fa;
+  pointer-events: none;
+}
+.mpesa-btn-thank{
   margin-bottom: 40px;
   border:1px solid #343a40;
   width: 100%;

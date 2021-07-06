@@ -16,9 +16,5 @@ will be processed shortly.{% endblocktrans %}
 {% for field in order.shipping_address.active_address_fields %}  {{ field }}
 {% endfor %}
 
-{% if status_url %}
-{% blocktrans %}You can view the status of this order at the below URL:
-{{ status_url }}{% endblocktrans %}
-{% endif %}
 
 {% blocktrans %}The team{% endblocktrans %}
