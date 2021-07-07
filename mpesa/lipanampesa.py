@@ -31,7 +31,7 @@ def lipa_na_mpesa(request):
         "Timestamp": formatted_time,
         "TransactionType": "CustomerPayBillOnline",
         "Amount": order_total,
-        "PartyA": phone_number,
+        "PartyA": user_number,
         "PartyB": business_short_code,
         "PhoneNumber": user_number,
         "CallBackURL": call_back_url,

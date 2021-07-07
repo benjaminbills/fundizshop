@@ -6,5 +6,5 @@ from .lipanampesa import lipa_na_mpesa
 
 urlpatterns = [
     path('', LNMCallbackUrlAPIView.as_view(), name='lnm-callbackurl'),
-    path('/lipa/', lipa_na_mpesa, name="lipanampesa")
+    path('lipa/', lipa_na_mpesa, name="lipanampesa")
 ]

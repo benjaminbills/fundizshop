@@ -8,27 +8,22 @@
 Order {{ number }}: confirmation
 {% endblocktrans %} | {{ block.super }}
 {% endblock title %}
-
 {% block checkout_nav %}
 {% include 'oscar/checkout/nav.html' with step=5 %}
 {% endblock %}
-
 {% block checkout_title %}
 {% blocktrans with number=order.number %}
 Order {{ number }}: confirmation
 {% endblocktrans %}
 {% endblock %}
-
 {% block content %}
-<p class="lead">
-    {% blocktrans with number=order.number %}
-    Your order has been placed and a confirmation email has been sent - your order number is
-    <strong>{{ number }}</strong>.
-    {% endblocktrans %}
-    {% trans "Please make a note of this reference or print this page and quote it in any communication with us
-    regarding your order." %}
-</p>
-
+    <p class="lead">
+        {% blocktrans with number=order.number %}
+        Your order has been placed and a confirmation email has been sent - your order number is
+        <strong>{{ number }}</strong>.
+        {% endblocktrans %}
+        {% trans "Please make a note of this reference or print this page and quote it in any communication with us regarding your order." %}
+    </p>
 <div class="row shipping-payment">
     <div class="col-sm-6">
         {% block shipping_info %}
@@ -43,8 +38,6 @@ Order {{ number }}: confirmation
                 {{ field }}<br />
                 {% endfor %}
             </address>
-
-
             {% if order.shipping_address.phone_number %}
             <h4>{% trans "Contact" %}</h4>
             <p>
@@ -54,7 +47,6 @@ Order {{ number }}: confirmation
                 {% endif %}
             </p>
             {% endif %}
-
             {% if order.shipping_address.notes %}
             <h4>{% trans "Instructions" %}</h4>
             <p>{{ order.shipping_address.notes|linebreaks }}</p>
@@ -63,21 +55,17 @@ Order {{ number }}: confirmation
             <p>{% trans "No shipping address required." %}</p>
             {% endif %}
         </div>
-
         <div class="card card-body bg-light">
             <h3>{% trans "Shipping method" %}</h3>
             <p>{{ order.shipping_method }}</p>
         </div>
         {% endblock %}
     </div>
-
 </div>
-
 {% block order_contents %}
 <div class="sub-header">
     <h2>{% trans "Order contents" %}</h2>
 </div>
-
 <div class="basket-title">
     <div class="row">
         <p class="col-sm-9 h4">{% trans "Items purchased" %}</p>
@@ -85,7 +73,6 @@ Order {{ number }}: confirmation
         <p class="col-sm-2 h4 text-right">{% trans "Total" %}</p>
     </div>
 </div>
-
 {% for line in order.lines.all %}
 <div class="basket-items">
     <div class="row">
@@ -118,37 +105,19 @@ Order {{ number }}: confirmation
     </div>
 </div>
 {% endfor %}
-
-
 {% block basket_totals %}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="row mb-4">
     <div class="col-sm-6">
         <div class="payment">
             <div class="paypal-btn">
-                <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo</a>
+                <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo <span style="color: tomato;">(Not available at the moment)</span></a>
             </div>
-
-        {% endfor %}
-
-        {% block basket_totals %}
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                <div class="payment">
-                <p><strong>Kindly choose your preferred payment method.</strong></p>
-                <div class="paypal-btn">
-                    <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo <span style="color: tomato;">(Not available at the moment)</span></a>
-                </div>
-                <div class="mpesa-btn-thank">
-                    <div type="button" data-toggle="modal" data-target="#exampleModal">
+            <div class="mpesa-btn-thank">
+                <!-- Button trigger modal -->
+                <div type="button" data-toggle="modal" data-target="#exampleModal">
                     Mpesa
                 </div>
-                </div>
-            </div>
-            <div id="paypal-button-container"></div>
-            <script src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
-
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -161,19 +130,17 @@ Order {{ number }}: confirmation
                                 </button>
                             </div>
                             <div class="modal-body">
-                                
-                                <form action="https://64b37cc41110.ngrok.io/api/payments/lipa/" method="POST">
+                                <form action="https://fundizshop.herokuapp.com/api/payments/lipa/" method="POST">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <label for="phoneNumber">Phone Number</label>
                                         <input type="number" class="form-control" id="phoneNumber"
-                                            placeholder="254714065404" name='phoneNumber'>
+                                            placeholder="0714065404" name='phoneNumber'>
                                         <input type="number" class="form-control mt-2" id="total"
                                             name='total', value="{{order.total_incl_tax}}" placeholder="{{order.total_incl_tax}}">
                                     </div>
                                     <button type="submit" class="btn btn-warning">Submit</button>
                                 </form>
-                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -186,8 +153,6 @@ Order {{ number }}: confirmation
         <div id="paypal-button-container"></div>
         <script
             src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
-
-
     </div>
     <div class="col-sm-6">
         <div class="sub-header">
@@ -197,9 +162,7 @@ Order {{ number }}: confirmation
     </div>
 </div>
 {% endblock basket_totals %}
-
 {% endblock order_contents %}
-
 {% block order_tracking %}
 {% if not order.user %}
 <div class="sub-header">
@@ -212,14 +175,11 @@ Order {{ number }}: confirmation
 </p>
 {% endif %}
 {% endblock %}
-
-
 {% block order_actions %}
 <div class="form-group">
     <div class="row">
         <div class="col-sm-4">
-            <p><a onclick="window.print()" href="#" class="btn btn-primary btn-block btn-lg">{% trans "Print this page"
-                    %}</a></p>
+            <p><a onclick="window.print()" href="#" class="btn btn-primary btn-block btn-lg">{% trans "Print this page" %}</a></p>
         </div>
         <div class="col-sm-4 offset-sm-4">
             <p><a href="{{ homepage_url }}" class="btn btn-primary btn-block btn-lg">{% trans "Continue shopping" %}</a>
@@ -228,7 +188,6 @@ Order {{ number }}: confirmation
     </div>
 </div>
 {% endblock order_actions %}
-
 <script>
     let total = '{{ order.total_incl_tax }}'
     function getCookie(name) {
@@ -247,15 +206,12 @@ Order {{ number }}: confirmation
         return cookieValue;
     }
     var csrftoken = getCookie('csrftoken');
-
     let total_to_usd = total / 100
     total_to_usd = Math.round((total_to_usd + Number.EPSILON) * 100) / 100
     console.log(total_to_usd)
     var orderId = '{{order.number}}'
-
     function completeOrder() {
         console.log('finish');
-
         var url = "{% url 'complete' %}"
         fetch(url, {
             method: 'POST',
@@ -266,11 +222,8 @@ Order {{ number }}: confirmation
             body: JSON.stringify({ 'orderId': orderId, 'status': 'success', 'paid': total_to_usd })
         })
     }
-
-
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
-
         // Set up the transaction
         createOrder: function (data, actions) {
             return actions.order.create({
@@ -288,13 +241,12 @@ Order {{ number }}: confirmation
                 completeOrder()
                 Swal.fire('Transaction completed by ' + details.payer.name.given_name + '!', 'success');
                 document.getElementById('paypal-button-container').style.display = 'none'
-                window.location = "http://127.0.0.1:8000/";
+                window.location = "https://fundizshop.herokuapp.com/";
             });
         }
     }).render('#paypal-button-container');
 </script>
 {% endblock content %}
-
 {% block tracking %}
 {% if send_analytics_event %}
 {% include "oscar/partials/google_analytics_transaction.html" %}

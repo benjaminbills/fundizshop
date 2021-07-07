@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 from access_token import generate_access_token
-import keys
+import credentials
 
 
 def register_url():
@@ -14,10 +14,10 @@ def register_url():
     headers = {"Authorization": "Bearer %s" % my_access_token}
 
     request = {
-        "ShortCode": keys.shortcode,
+        "ShortCode": credentials.shortcode,
         "ResponseType": "Completed",
-        "ConfirmationURL": "https://mysterious-oasis-16355.herokuapp.com/api/payments/c2b-confirmation/",
-        "ValidationURL":   "https://mysterious-oasis-16355.herokuapp.com/api/payments/c2b-validation/",
+        "ConfirmationURL": "https://fundizshop.herokuapp.com/",
+        "ValidationURL":   "https://fundizshop.herokuapp.com/",
     }
 
     try:
@@ -39,10 +39,10 @@ def simulate_c2b_transaction():
     headers = {"Authorization": "Bearer %s" % my_access_token}
 
     request = {
-        "ShortCode": keys.shortcode,
+        "ShortCode": credentials.shortcode,
         "CommandID": "CustomerPayBillOnline",
         "Amount": "4",
-        "Msisdn": keys.test_msisdn,
+        "Msisdn": credentials.test_msisdn,
         "BillRefNumber": "myaccnumber",
     }
     try:
