@@ -1,20 +1,57 @@
-{% load currency_filters i18n %}{% blocktrans with order_number=order.number %}Hello,
+{% extends "oscar/communication/emails/base.html" %}
+{% load currency_filters i18n %}
 
-We are pleased to confirm your order {{ order_number }} has been received and
-will be processed shortly.{% endblocktrans %}
+{% block tbody %}
+<tr>
+    <td class="content-block">
+        <p xmlns="http://www.w3.org/1999/html">{% trans 'Hello,' %}</p>
+        <p>{% blocktrans with order_number=order.number %}We are pleased to confirm your order {{ order_number }} has been received and
+        will be processed shortly.{% endblocktrans %}</p>
+    </td>
+</tr>
 
-{% trans 'Your order contains:' %}
+<tr>
+    <td class="content-block">
+        <table class="order">
+            <tbody><tr>
+                <td>{% trans 'Your order contains:' %}</td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="order-items" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            {% for line in order.lines.all %}
+                                <tr>
+                                    <td>{{ line.title }} &times; {{ line.quantity }}</td>
+                                    <td class="alignright">{{ line.line_price_incl_tax|currency:order.currency }}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td class="alignright">{% trans 'Basket total:' %}</td>
+                                <td class="alignright">{{ order.basket_total_incl_tax|currency:order.currency }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alignright">{% trans 'Shipping:' %}</td>
+                                <td class="alignright">{{ order.shipping_incl_tax|currency:order.currency }}</td>
+                            </tr>
+                            <tr class="total">
+                                <td class="alignright" width="80%">{% trans 'Order Total:' %}</td>
+                                <td class="alignright">{{ order.total_incl_tax|currency:order.currency }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody></table>
+    </td>
+</tr>
 
-{% for line in order.lines.all %} * {{ line.title }} - {%  trans 'quantity:' %} {{ line.quantity }} - {% trans 'price:' %} {{ line.line_price_incl_tax|currency:order.currency }}
-{% endfor %}
-{% trans 'Basket total:' %} {{ order.basket_total_incl_tax|currency:order.currency }}
-{% trans 'Shipping:' %} {{ order.shipping_incl_tax|currency:order.currency }}
-{% trans 'Order Total:' %} {{ order.total_incl_tax|currency:order.currency }}
+<tr>
+    <td class="content-block">
+        <p>{% trans 'Shipping address:' %}</p>
+        <p>{% for field in order.shipping_address.active_address_fields %}  {{ field }}<br/>
+        {% endfor %}</p>
+    </td>
+</tr>
 
-{% trans 'Shipping address:' %}
-
-{% for field in order.shipping_address.active_address_fields %}  {{ field }}
-{% endfor %}
-
-
-{% blocktrans %}The team{% endblocktrans %}
+{% endblock %}
