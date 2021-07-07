@@ -32,7 +32,7 @@
         {% block product_title %}
             <h3 class="mt-3">
                 <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">
-                    {{ product.get_title|truncatewords:4 }}
+                    {{ product.get_title|truncatewords:3 }}
                 </a>
             </h3>
         {% endblock %}
