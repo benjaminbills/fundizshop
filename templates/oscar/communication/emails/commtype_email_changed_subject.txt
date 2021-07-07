@@ -1,0 +1,1 @@
+{% load i18n %}{% blocktrans with site_name='https://fundizshop.herokuapp.com/' %}Your email address has changed at {{ site_name }}.{% endblocktrans %}
