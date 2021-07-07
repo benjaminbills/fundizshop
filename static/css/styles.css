@@ -5026,7 +5026,7 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem;
+  /* padding: 1.25rem; */
 }
 
 .card-title {
@@ -10914,7 +10914,6 @@ a.text-dark:focus {
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
-
 .fa,
 .fas {
   font-family: 'Font Awesome 5 Free';
@@ -10925,7 +10924,6 @@ a.text-dark:focus {
  * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-
 
 .far {
   font-family: 'Font Awesome 5 Free';
@@ -17462,16 +17460,16 @@ body {
   bottom: 0;
 }
 /* Image thumbnail  */
-.image_container {
+/* .image_container {
   width: 100%;
   min-height: 165px;
   overflow: hidden;
   text-align: center;
   position: relative;
-}
+} */
 
 .image_container img {
-  max-height: 155px;
+  max-height: 300px;
   max-width: 100%;
 }
 
