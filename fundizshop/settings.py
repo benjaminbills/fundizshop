@@ -101,7 +101,8 @@ INSTALLED_APPS = [
     'paypal',
     'transaction',
     'rest_framework',
-    'debug_toolbar'
+    'debug_toolbar',
+    'bootstrap5'
 ]
 
 REST_FRAMEWORK = {
@@ -163,23 +164,23 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
 DEBUG = True
 # development
-if config('MODE')=="dev":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'PORT': '',
-        }
+# if config('MODE')=="dev":
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'PORT': '',
+    }
 
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
+}
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=config('DATABASE_URL')
+#         )
+#     }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 
