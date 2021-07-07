@@ -16,7 +16,7 @@ import os
 from decouple import config, Csv
 # import moneyed
 # import django_heroku
-# import dj_database_url
+import dj_database_url
 
 # KSH = moneyed.add_currency(
 #     code='KSH',
@@ -163,36 +163,28 @@ WSGI_APPLICATION = 'fundizshop.wsgi.application'
 
 DEBUG = True
 # development
-# if config('MODE')=="dev":
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': config('DB_NAME'),
-#             'USER': config('DB_USER'),
-#             'PASSWORD': config('DB_PASSWORD'),
-#             'PORT': '',
-#         }
+if config('MODE')=="dev":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'PORT': '',
+        }
 
-#     }
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default=config('DATABASE_URL')
-#         )
-#     }
-
-# db_from_env = dj_database_url.config(conn_max_age=500)
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fundi',
-        'USER': 'joykirii',
-        'PASSWORD': 'kirii',
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
+    }
 
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+db_from_env = dj_database_url.config(conn_max_age=500)
+
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 HAYSTACK_CONNECTIONS = {
     'default': {
