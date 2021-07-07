@@ -1,0 +1,7 @@
+{% load i18n %}
+<p>Dear Customer,</p>
+<p></p>
+<p>Your new Fundizshop Account has been created.</p>
+<p>Welcome to Fundizshop Community!</p>
+<p>From now on, please log in to your account using your email address and your password.</p>
+<a href='https://fundizshop.herokuapp.com/'>Fundizshop</a>

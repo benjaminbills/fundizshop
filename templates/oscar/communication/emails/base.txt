@@ -1,4 +1,4 @@
 {% load i18n %}{% block header %}{% endblock %}{% block body %}{% endblock %}{% block footer %}
 
 {% trans "Thanks for using our site!" %}
-{% blocktrans with name=site.name %}The {{ name }} team{% endblocktrans %}{% endblock %}
+{% blocktrans with name='Fundizshop' %}The <a href='https://fundizshop.herokuapp.com/'>Fundizshop </a> team{% endblocktrans %}{% endblock %}

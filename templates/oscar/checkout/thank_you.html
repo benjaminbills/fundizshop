@@ -128,11 +128,26 @@ Order {{ number }}: confirmation
             <div class="paypal-btn">
                 <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo</a>
             </div>
-            <div class="mpesa-btn">
-                <!-- Button trigger modal -->
-                <div type="button" data-toggle="modal" data-target="#exampleModal">
+
+        {% endfor %}
+
+        {% block basket_totals %}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <div class="row mb-4">
+                <div class="col-sm-6">
+                <div class="payment">
+                <p><strong>Kindly choose your preferred payment method.</strong></p>
+                <div class="paypal-btn">
+                    <a class=" paypal-link p-2" href="#">Lipa Mdogo Mdogo <span style="color: tomato;">(Not available at the moment)</span></a>
+                </div>
+                <div class="mpesa-btn-thank">
+                    <div type="button" data-toggle="modal" data-target="#exampleModal">
                     Mpesa
                 </div>
+                </div>
+            </div>
+            <div id="paypal-button-container"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

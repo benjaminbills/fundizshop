@@ -10,7 +10,7 @@ Beware that the amount of items in stock is limited.
 Be quick or someone might get there first.
 
 
-{% endblocktrans %}{% endif %}{% blocktrans with site_name=site.name %}
+{% endblocktrans %}{% endif %}{% blocktrans with site_name='https://fundizshop.herokuapp.com/' %}
 With this email we have disabled your alert automatically and you will not
 receive any further email regarding this product.
 
