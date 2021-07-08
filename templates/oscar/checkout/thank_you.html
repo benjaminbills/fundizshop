@@ -136,8 +136,9 @@ Order {{ number }}: confirmation
                                         <label for="phoneNumber">Phone Number</label>
                                         <input type="number" class="form-control" id="phoneNumber"
                                             placeholder="0714065404" name='phoneNumber'>
+                                        <label for="amount">Amount</label>
                                         <input type="number" class="form-control mt-2" id="total"
-                                            name='total', value="{{order.total_incl_tax}}" placeholder="{{order.total_incl_tax}}">
+                                            name='total', value="{{order.total_incl_tax}}" placeholder="{{order.total_incl_tax}}" readonly>
                                     </div>
                                     <button type="submit" class="btn btn-warning">Submit</button>
                                 </form>

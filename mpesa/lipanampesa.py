@@ -3,6 +3,7 @@ from requests.auth import HTTPBasicAuth
 from requests.models import Response
 from .environment import get_timestamp, generate_password, generate_access_token
 import requests
+from django.shortcuts import redirect 
 from .credentials import *
 from .models import LNMOnline
 
@@ -42,4 +43,4 @@ def lipa_na_mpesa(request):
     response = requests.post(api_url, json=request, headers=headers)
 
     print(response.text)
-    return JsonResponse("Success", safe=False)
+    return redirect('https://fundizshop.herokuapp.com/catalogue/')
