@@ -154,6 +154,11 @@ Order {{ number }}: confirmation
         <div id="paypal-button-container"></div>
         <script
             src="https://www.paypal.com/sdk/js?client-id=AfSSXg_k6UlnOnZBgTfYxqoNSleT5UCQo_n5FzprDQIjL-7QaHpzXnqgea-qnJr7jbZMeI-DdZ-Z9Iw7&currency=USD"></script>
+            <script
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+crossorigin="anonymous"
+></script>
     </div>
     <div class="col-sm-6">
         <div class="sub-header">
@@ -190,6 +195,16 @@ Order {{ number }}: confirmation
 </div>
 {% endblock order_actions %}
 <script>
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "https://v6.exchangerate-api.com/v6/b842abcb688a725bae23099e/pair/USD/KES",
+            dataType: "json",
+        }).done(function (data) {
+            var exchange_rate = data.conversion_rate
+    console.log(Math.round(exchange_rate))
+        })
+    })
     let total = '{{ order.total_incl_tax }}'
     function getCookie(name) {
         var cookieValue = null;
