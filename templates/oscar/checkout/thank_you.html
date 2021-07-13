@@ -195,16 +195,35 @@ crossorigin="anonymous"
 </div>
 {% endblock order_actions %}
 <script>
-    $(document).ready(function () {
-        $.ajax({
-            method: "GET",
-            url: "https://v6.exchangerate-api.com/v6/b842abcb688a725bae23099e/pair/USD/KES",
-            dataType: "json",
-        }).done(function (data) {
-            var exchange_rate = data.conversion_rate
-    console.log(Math.round(exchange_rate))
-        })
+    let exchange_rate = [];
+    const Url = 'https://v6.exchangerate-api.com/v6/b842abcb688a725bae23099e/pair/USD/KES'
+    fetch(Url)
+  .then(res => res.json())
+  .then(data => obj = exchange_rate.push(data))
+  console.log(exchange_rate)
+    async function fetchExchangeRate() {
+        try {
+            const response = await fetch(Url, {
+                method: 'GET',
+                credentials: 'same-origin'
+            });
+            const rate = await response.json();
+            return Math.round(rate.conversion_rate);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function renderRate() {
+        const rate = await fetchExchangeRate();
+        return rate
+    }
+
+    let result = renderRate()
+    result.then(function(r) {
+        return r
     })
+    
+
     let total = '{{ order.total_incl_tax }}'
     function getCookie(name) {
         var cookieValue = null;
